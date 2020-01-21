@@ -13,7 +13,9 @@ int vieMonstre ;
 int attaqueMonstre ;
 int choix ;
 int choixMonstre ;
+int poison ;
 
+poison = 10;
 attaquePerso = 4 ;
 attaqueMonstre = 4 ;
 vieMonstre = 10 ;
@@ -23,9 +25,10 @@ choixMonstre = rand()%2+1;
 printf("un zombie sort de terre il as %d point de vie \n",vieMonstre );
 printf("et toi tu as %d point de vie \n",viePerso );
 while ( vieMonstre > 0 ){
+  poison = poison + 1;
   attaquePerso = 4 ;
   attaqueMonstre = 4 ; // je sias pas si j'ai bon mais si je ne met pas a nouveau lattaque a 4 elle vas etre 4/4 pour 4/4/4 donc le monstre ne pourras pas gagner
-printf("tu peux l'attaquer = 1 ou te defendre = 2 \n" );
+printf("tu peux l'attaquer = 1 ou te defendre = 2 ou tu peux utiliser t'as magie pour le bruler = 3 \n" );
 scanf("%d \n",&choix);
 
 if (choix == 1 ){
@@ -41,10 +44,15 @@ if (choix == 2 ){
 printf("tu te protege de ton bouclier \n" );
 attaqueMonstre = attaqueMonstre / 4;
 }
+
+if (choix == 3 ){
+  printf("tu lance un sort de feu sur le zombie tu perd 4 point \n" );
+  poison = poison - 4;
+}
 printf(" %d ", choixMonstre);
 if (choixMonstre == 2 ){
 printf("attention le zombie t'attaque \n" );
-viePerso = viePerso - attaqueMonstre ;
+viePerso = viePerso - attaqueMonstre  ;
 printf("il te reste %d point de vie \n",viePerso );
 if  (viePerso <=0){
   printf("quelle dommage tu es mort !\n" );
